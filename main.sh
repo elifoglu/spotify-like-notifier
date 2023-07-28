@@ -2,7 +2,7 @@
 
 # https://developer.spotify.com/ to get an access token that lasts an hour
 
-spotify_access_token='YOUR_SPOTIFY_ACCESS_TOKEN'
+spotify_access_token=$1
 
 get_all_playlists () { 
    curl --request GET \
