@@ -2,7 +2,9 @@
 
 # https://developer.spotify.com/ to get an access token that lasts an hour
 
-spotify_access_token=$1
+echo "please go to https://developer.spotify.com/ to get an access token, and paste it here...:"
+
+read spotify_access_token
 
 get_all_playlists () { 
    curl --request GET \
@@ -12,7 +14,7 @@ get_all_playlists () {
 
 get_playlist_data () {
    curl --silent --request GET \
-  --url https://api.spotify.com/v1/playlists/$1?market=TR \
+  --url https://api.spotify.com/v1/playlists/$1?market=TR \ # change market value as you wish
   --header 'Authorization: Bearer '"$spotify_access_token"
 }
 
