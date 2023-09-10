@@ -20,7 +20,7 @@ get_playlist_data () {
 
 mkdir -p playlists
 
-# multiple requests had to be sent by changing the offset value, since the "limit" value cannot be bigger than 50 
+# multiple requests had to be sent by changing the offset value since the "limit" value cannot be bigger than 50 
 get_all_playlists 0 | jq '.items | .[] | .uri' > first_50.txt
 get_all_playlists 50 | jq '.items | .[] | .uri' > second_50.txt
 get_all_playlists 100 | jq '.items | .[] | .uri' > third_50.txt
@@ -34,7 +34,7 @@ while read playlist_id; do
   playlist_name="${playlist_name%?}" # removes last character, which is a quote
   
   echo $playlist_name > temp.txt
-  playlist_name=$(tr -d '/' < temp.txt)  # removes all forwards lashes in playlist names since the file cannot be created when filename contains some forward slashes 
+  playlist_name=$(tr -d '/' < temp.txt)  # removes all forward slashes in playlist names since the file cannot be created when the filename contains some forward slashes 
   echo $playlist_name > temp.txt
   playlist_name=$(tr -d ' ' < temp.txt)  # removes all spaces in playlist names
 
